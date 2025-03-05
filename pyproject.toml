@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "practical-rife-fork"
+version = "0.1.0"
+description = "Fork of Practical RIFE implementation"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "practical_rife", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+numpy = ">=1.25.2,<1.27.0"
+tqdm = ">=4.35.0"
+sk-video = ">=1.1.10"
+torch = ">=1.3.0"
+opencv-python = ">=4.1.2"
+moviepy = ">=1.0.3"
+torchvision = ">=0.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
