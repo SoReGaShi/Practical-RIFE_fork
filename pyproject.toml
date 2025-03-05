@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Fork of Practical RIFE implementation"
 authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
-packages = [{include = "practical_rife", from = "src"}]
+packages = [{include = "practical_rife_fork", from = "src"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
