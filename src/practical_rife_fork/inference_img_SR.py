@@ -16,7 +16,16 @@ parser = argparse.ArgumentParser(description='STVSR for a pair of images')
 parser.add_argument('--img', dest='img', nargs=2, required=True)
 parser.add_argument('--exp', default=2, type=int)
 parser.add_argument('--ratio', default=0, type=float, help='inference ratio between two images with 0 - 1 range')
-parser.add_argument('--model', dest='modelDir', type=str, default='train_log', help='directory with trained model files')
+
+# 改変部分（ここから）
+# parser.add_argument('--model', dest='modelDir', type=str, default='train_log', help='directory with trained model files')
+import os
+# 現在のスクリプトファイルのディレクトリを取得
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# 'train_log'のディレクトリをスクリプトと同じ場所に設定
+model_dir = os.path.join(script_dir, 'train_log')
+parser.add_argument('--model', dest='modelDir', type=str, default=model_dir, help='directory with trained model files')
+# 改変部分（ここまで）
 
 args = parser.parse_args()
 
