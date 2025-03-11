@@ -57,7 +57,17 @@ parser = argparse.ArgumentParser(description='Video SR')
 parser.add_argument('--video', dest='video', type=str, default=None)
 parser.add_argument('--output', dest='output', type=str, default=None)
 parser.add_argument('--img', dest='img', type=str, default=None)
-parser.add_argument('--model', dest='modelDir', type=str, default='train_log', help='directory with trained model files')
+
+# 改変部分（ここから）
+# parser.add_argument('--model', dest='modelDir', type=str, default='train_log', help='directory with trained model files')
+import os
+# 現在のスクリプトファイルのディレクトリを取得
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# 'train_log'のディレクトリをスクリプトと同じ場所に設定
+model_dir = os.path.join(script_dir, 'train_log')
+parser.add_argument('--model', dest='modelDir', type=str, default=model_dir, help='directory with trained model files')
+# 改変部分（ここまで）
+
 parser.add_argument('--fp16', dest='fp16', action='store_true', help='fp16 mode for faster and more lightweight inference on cards with Tensor Cores')
 parser.add_argument('--png', dest='png', action='store_true', help='whether to vid_out png format vid_outs')
 parser.add_argument('--ext', dest='ext', type=str, default='mp4', help='vid_out video extension')
