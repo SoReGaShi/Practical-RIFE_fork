@@ -29,7 +29,6 @@ model_dir = os.path.join(script_dir, 'train_log')
 parser.add_argument('--model', dest='modelDir', type=str, default=model_dir, help='directory with trained model files')
 # 改変部分（ここまで）
 
-
 args = parser.parse_args()
 
 try:
