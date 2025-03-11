@@ -18,7 +18,17 @@ parser.add_argument('--exp', default=4, type=int)
 parser.add_argument('--ratio', default=0, type=float, help='inference ratio between two images with 0 - 1 range')
 parser.add_argument('--rthreshold', default=0.02, type=float, help='returns image when actual ratio falls in given range threshold')
 parser.add_argument('--rmaxcycles', default=8, type=int, help='limit max number of bisectional cycles')
-parser.add_argument('--model', dest='modelDir', type=str, default='train_log', help='directory with trained model files')
+
+# 改変部分（ここから）
+# parser.add_argument('--model', dest='modelDir', type=str, default='train_log', help='directory with trained model files')
+import os
+# 現在のスクリプトファイルのディレクトリを取得
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# 'train_log'のディレクトリをスクリプトと同じ場所に設定
+model_dir = os.path.join(script_dir, 'train_log')
+parser.add_argument('--model', dest='modelDir', type=str, default=model_dir, help='directory with trained model files')
+# 改変部分（ここまで）
+
 
 args = parser.parse_args()
 
