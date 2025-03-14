@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "practical-rife-fork"
+name = "practical_rife_fork"
 version = "0.1.0"
 description = "Fork of Practical RIFE implementation"
 authors = [
