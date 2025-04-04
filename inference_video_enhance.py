@@ -64,7 +64,9 @@ parser.add_argument('--ext', dest='ext', type=str, default='mp4', help='vid_out 
 
 args = parser.parse_args()
 assert (not args.video is None or not args.img is None)
-if not args.img is None:
+# if not args.img is None:
+#    args.png = True
+if not args.img is None and args.png is None:
     args.png = True
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
