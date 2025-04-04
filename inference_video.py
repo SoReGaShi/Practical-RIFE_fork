@@ -78,7 +78,9 @@ if args.skip:
 if args.UHD and args.scale==1.0:
     args.scale = 0.5
 assert args.scale in [0.25, 0.5, 1.0, 2.0, 4.0]
-if not args.img is None:
+# if not args.img is None:
+#    args.png = True
+if not args.img is None and args.png is None:
     args.png = True
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
