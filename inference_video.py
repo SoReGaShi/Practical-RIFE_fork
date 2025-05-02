@@ -256,11 +256,27 @@ while True:
         write_buffer.put(np.concatenate((lastframe, lastframe), 1))
         for mid in output:
             mid = (((mid[0] * 255.).byte().cpu().numpy().transpose(1, 2, 0)))
+
+            
+            # ★ここに色空間変換処理を追加★
+            import cv2
+            if not args.rgb_output:  # RGBのまま出力するオプションがない場合に変換
+                mid = cv2.cvtColor(mid, cv2.COLOR_RGB2YUV_I709)  # BT.709カラーマトリクスを使用
+
+            
             write_buffer.put(np.concatenate((lastframe, mid[:h, :w]), 1))
     else:
         write_buffer.put(lastframe)
         for mid in output:
             mid = (((mid[0] * 255.).byte().cpu().numpy().transpose(1, 2, 0)))
+
+        
+            # ★同様にここにも色空間変換処理を追加★
+            import cv2
+            if not args.rgb_output:
+                mid = cv2.cvtColor(mid, cv2.COLOR_RGB2YUV_I709)
+
+            
             write_buffer.put(mid[:h, :w])
     pbar.update(1)
     lastframe = frame
